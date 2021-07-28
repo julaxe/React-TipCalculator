@@ -1,12 +1,20 @@
+
 *{
     box-sizing: border-box;
 }
+.form{
+   display: flex;
+   flex-wrap: wrap;
+}
+.form > *{
+    flex: 1 1 330px;
+}
 .left{
-    width: 90%;
-    height: 80%;
+    padding: 1.5rem;
 }
 .input{
-    padding-bottom: 10px;
+    padding-bottom: 0.5rem;
+    padding-top: 0.2rem;
 }
 .input input{
     width: 100%;
@@ -23,34 +31,53 @@
     background-image: url(./images/icon-dollar.svg);
     background-position: 3% 50%;
     background-repeat: no-repeat;
-    background-size: 3%;
+    background-size: 0.5rem;
 }
 #nofP{
     background-image: url(./images/icon-person.svg);
     background-position: 3% 50%;
     background-repeat: no-repeat;
-    background-size: 3%;
+    background-size: 0.5rem;
 }
 .select-Tip{
     width: 100%;
-    margin: 5px;
-    display: grid;
-    grid-template-columns: 30% 30% 30%;
-    grid-template-rows: 30px 30px;
-    grid-gap: 10px;
-    padding-bottom: 10px;
+    display: flex;
+    gap: 0.5em;
+    flex-wrap: wrap;
+    padding-bottom: 0.5rem;
 }
-.select-Tip button{
+.select-Tip > * {
+    flex: 1 0 25%;
+}
+.tip-option > input{
+    width: 100%;
+    min-width: 7em;
+
+}
+.select-Tip input{
+    font-weight: 600;
+    color: #00494d;
+    text-align: center;
+}
+.cl-button{
+    width:100%;
+    padding: 0.3rem;
     background-color:  #00494d;
     color: white;
     border: none;
     border-radius: 5px;
 }
-.select-Tip input{
-    width: auto;
-    font-weight: 600;
+.cl-button-active{
+    background-color:  #26c0ab;
     color: #00494d;
-    text-align: center;
+    border: none;
+    border-radius: 5px;
+}
+.cl-button:hover{
+    background-color:  #0f99a0;
+    color: white;
+    border: none;
+    border-radius: 5px;
 }
 label{
     font-size: 60%;
@@ -59,11 +86,42 @@ label{
 .right{
     background-color: #00494d;
     width:100%;
-    height:100%;
     border-radius: 10px;
     color: white;
+    margin: 1rem;
 }
-form{
+.result-template{
+    margin: 1.7rem; 
     display: grid;
-    grid-template-columns: 50% 50%;
+    font-size: 0.6rem;
+    grid-template: 
+            "a  c"
+            "b  c"
+}
+.result-template p{
+    margin: 0.1rem;
+    font-weight: 600;
+}
+.person{
+    font-size: 0.5rem;
+    color: #c5e4e7;
+}
+.result{
+    font-size: 1.7rem;
+    grid-area: c; 
+    text-align: right;
+    color: #26c0ab;
+    font-weight: bold;
+}
+.reset{
+    margin:1rem;
+    padding: 0.5rem;
+    width: 90%;
+    border: none;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 5px;
+    background-color:#26c0ab;
+    color: #00494d;
+    letter-spacing: 0.1rem;
 }
