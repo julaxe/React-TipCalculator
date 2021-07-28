@@ -77,20 +77,33 @@ export default function Calculator() {
                 </div>
             </div>
 
-            <div className="right">
-                <div className="result-template">
-                    <p className="name"><br></br>Tip Amount</p>
-                    <p className="result">${result.tip}</p>
-                    <p className="person">/ person</p>
-                </div>
-                <div className="result-template">
-                    <p className="name"><br></br>Total</p>
-                    <p className="result">${result.total}</p>
-                    <p className="person">/ person</p>
-                    
-                </div>
-                <div>
-                    <button className="reset">RESET</button>
+            <div className="green-container">
+                <div className="right"> 
+                    <div className="right-top">
+                        <div className="result-template">
+                            <div className="result-left">
+                                <p className="name"><br></br>Tip Amount</p>
+                                <p className="person">/ person</p>
+                            </div>
+                            <div className="result-right">
+                                <p className="result">${result.tip}</p>
+                            </div>
+                        </div>
+                        <div className="result-template">
+                            <div className="result-left">
+                                <p className="name"><br></br>Total</p>
+                                <p className="person">/ person</p>
+                            </div>
+                            <div className="result-right">
+                                <p className="result">${result.total}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="right-bottom">
+                        <div className="reset-container">
+                            <button className="reset">RESET</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             

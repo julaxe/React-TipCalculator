@@ -3,11 +3,14 @@
     box-sizing: border-box;
 }
 .form{
-   display: flex;
-   flex-wrap: wrap;
+   display: grid;
+   grid-template-columns: 50% 50%;
 }
-.form > *{
-    flex: 1 1 330px;
+@media (max-width: 375px) {
+    .form{
+        grid-template-columns: none;
+        grid-template-rows: 50vh 30vh;
+    }
 }
 .left{
     padding: 1.5rem;
@@ -41,18 +44,18 @@
 }
 .select-Tip{
     width: 100%;
-    display: flex;
     gap: 0.5em;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
     padding-bottom: 0.5rem;
 }
-.select-Tip > * {
-    flex: 1 0 25%;
+@media (max-width: 375px) {
+    .select-Tip{
+        grid-template-columns: 50% 50%;
+    }
 }
 .tip-option > input{
     width: 100%;
-    min-width: 7em;
-
 }
 .select-Tip input{
     font-weight: 600;
@@ -68,6 +71,8 @@
     border-radius: 5px;
 }
 .cl-button-active{
+    width:100%;
+    padding: 0.3rem;
     background-color:  #26c0ab;
     color: #00494d;
     border: none;
@@ -83,23 +88,36 @@ label{
     font-size: 60%;
     padding-left: 2%;
 }
+.green-container{
+    padding: 1.5rem;
+}
 .right{
     background-color: #00494d;
     width:100%;
+    height:100%;
     border-radius: 10px;
     color: white;
-    margin: 1rem;
+    display: grid;
+    grid-template-rows: 50% 50%;
+}
+@media (max-width: 375px) {
+    .right{
+        grid-template-rows: 60% 40%;
+    }
+}
+.right-top{
+    display: grid;
+    grid-template-rows: 50% 50%;
 }
 .result-template{
-    margin: 1.7rem; 
+    padding-left: 1rem; 
+    padding-right: 1rem;
     display: grid;
     font-size: 0.6rem;
-    grid-template: 
-            "a  c"
-            "b  c"
+    grid-template-columns: 50% 50%;
 }
 .result-template p{
-    margin: 0.1rem;
+    margin: 0rem;
     font-weight: 600;
 }
 .person{
@@ -107,18 +125,25 @@ label{
     color: #c5e4e7;
 }
 .result{
-    font-size: 1.7rem;
-    grid-area: c; 
+    position: relative;
+    top: 30%;
+    font-size: 1.3rem;
     text-align: right;
     color: #26c0ab;
     font-weight: bold;
 }
+.right-bottom{
+    align-self: end;
+}
+.reset-container{
+    width:100%;
+    padding: 1em;
+}
 .reset{
-    margin:1rem;
     padding: 0.5rem;
     width: 90%;
     border: none;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 700;
     border-radius: 5px;
     background-color:#26c0ab;
