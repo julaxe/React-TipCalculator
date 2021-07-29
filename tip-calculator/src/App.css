@@ -20,12 +20,15 @@ html{
   background: white;
   font-weight: 400;
   width: auto;
-  min-width: 200px;
+  min-width: 550px;
   border-radius:20px;
   color: #00494d;
 }
 @media (max-width: 375px) {
   .App{
     grid-template-rows: 20% 80%;
+  }
+  .calculator{
+    min-width: 220px;
   }
 }

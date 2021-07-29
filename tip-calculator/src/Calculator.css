@@ -12,6 +12,11 @@
         grid-template-rows: 50vh 30vh;
     }
 }
+.error-message{
+    color: rgb(138, 78, 0);
+    padding-left: 1.5rem;
+    font-size: 0.5rem;
+}
 .left{
     padding: 1.5rem;
 }

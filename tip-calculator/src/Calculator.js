@@ -5,8 +5,9 @@ export default function Calculator() {
     const bill = React.useRef(0);
     const people = React.useRef(0);
     const [result, setResult] = React.useState({tip : 0, total : 0 })
-    const [error, setError] = React.useState(null);
-    
+    const [error, setError] = React.useState({bill: "", people: ""});
+    const cTip = React.useRef(0);
+
     const tipArray = [5,10,15,25,50];
     const [stArray, setStArray] = React.useState(tipArray.map(
         tip => {
@@ -14,14 +15,37 @@ export default function Calculator() {
         }
     ))
     function onChangeHandler(event){
+        setStArray(stArray.map(e=> {return {tip: e.tip, active: false}}))
+        
+        if(event.target.id === "bill"){
+            if(!parseFloat(event.target.value)) {
+                setError({...error, bill: "set a proper value" });
+            }else if(parseFloat(event.target.value) <= 0)
+            {
+                setError({...error, bill: "number greater than zero"});
+            }else{
+                setError({ ...error,bill: ""});
+            }
+        }else{
+            
+            if(!parseFloat(event.target.value)) {
+                setError({ ...error,people: "set a proper value"});
+            }else if(parseFloat(event.target.value) <= 0)
+            {
+                setError({ ...error,people: "number greater than zero"});
+            }else{
+                setError({ ...error,people: ""});
+            }
+        }
+
     }
     function onClickHandler(event){
-        if(people.current.value <= 0)
+        
+        if(error.bill !== "" || error.people !== "" || people.current.value === "")
         {
-            setError("Set a proper number");
+            console.log(people.current.value)
             return
         }
-        setError(null);
         const newTip = parseInt(event.target.value);
         setStArray(stArray.map(
             e => {
@@ -32,15 +56,30 @@ export default function Calculator() {
                 }
             }
         ))
+        CalculateResults(newTip);
+        
+    }
 
+    function CalculateResults(newTip){
         const TipAmount = (bill.current.value / people.current.value) * (newTip / 100)
         const total = (bill.current.value / people.current.value) + TipAmount
-        console.log(TipAmount)
         setResult({tip:TipAmount.toFixed(2), total: total.toFixed(2)})
+    }
+    function customTip(event){
+        if((!parseFloat(event.target.value) && parseFloat(event.target.value) !== 0) || 
+        parseFloat(event.target.value) < 0 ||
+        people.current.value === ""){
+            return;
+        }
+        CalculateResults(event.target.value);
+        
     }
 
     function reset(){
-
+        bill.current.value = "";
+        people.current.value = 1;
+        cTip.current.value = "";
+        CalculateResults(0);
     }
 
     function Button(props) {
@@ -59,7 +98,7 @@ export default function Calculator() {
         <div className="form">
             <div className="left">
                 <div className="input">
-                    <label htmlFor="bill">Bill</label><br></br>
+                    <label htmlFor="bill">Bill {error.bill ? <label className="error-message">{error.bill}</label>: ''}</label><br></br>
                     <input ref={bill} id="bill" type="text" placeholder="0" onChange={onChangeHandler}/>
                 </div>
                 <label className="label">Select Tip %</label>
@@ -68,12 +107,12 @@ export default function Calculator() {
                         <Button key={e.tip} percentage={e.tip} active={e.active} />
                     )}
                     <div className="tip-option">
-                        <input type="text" id="customTip" placeholder="C"/>
+                        <input ref={cTip} type="text" id="customTip" placeholder="Custom" onChange={customTip}/>
                     </div>
                 </div>
                 <div className="input">
-                    <label htmlFor="nofP">Number of People</label>{error ? <label>{error}</label>: ''}<br></br>
-                    <input ref={people} id="nofP" type="text" placeholder="0" />
+                    <label htmlFor="people">Number of People{error.people ? <label className="error-message">{error.people}</label>: ''}</label><br></br>
+                    <input ref={people} id="people" type="text" placeholder="0" onChange={onChangeHandler}/>
                 </div>
             </div>
 
@@ -101,7 +140,7 @@ export default function Calculator() {
                     </div>
                     <div className="right-bottom">
                         <div className="reset-container">
-                            <button className="reset">RESET</button>
+                            <button className="reset" onClick={reset}>RESET</button>
                         </div>
                     </div>
                 </div>
