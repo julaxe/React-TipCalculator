@@ -6,7 +6,7 @@
    display: grid;
    grid-template-columns: 50% 50%;
 }
-@media (max-width: 375px) {
+@media (max-width: 400px) {
     .form{
         grid-template-columns: none;
         grid-template-rows: 50vh 30vh;
@@ -105,7 +105,7 @@ label{
     display: grid;
     grid-template-rows: 50% 50%;
 }
-@media (max-width: 375px) {
+@media (max-width: 400px) {
     .right{
         grid-template-rows: 60% 40%;
     }
