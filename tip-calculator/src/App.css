@@ -24,7 +24,7 @@ html{
   border-radius:20px;
   color: #00494d;
 }
-@media (max-width: 400px) {
+@media (max-width: 420px) {
   .App{
     grid-template-rows: 20% 80%;
   }

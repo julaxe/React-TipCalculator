@@ -6,7 +6,7 @@
    display: grid;
    grid-template-columns: 50% 50%;
 }
-@media (max-width: 400px) {
+@media (max-width: 420px) {
     .form{
         grid-template-columns: none;
         grid-template-rows: 50vh 30vh;
@@ -54,7 +54,7 @@
     grid-template-columns: 33% 33% 33%;
     padding-bottom: 0.5rem;
 }
-@media (max-width: 375px) {
+@media (max-width: 420px) {
     .select-Tip{
         grid-template-columns: 50% 50%;
     }
@@ -105,7 +105,7 @@ label{
     display: grid;
     grid-template-rows: 50% 50%;
 }
-@media (max-width: 400px) {
+@media (max-width: 420px) {
     .right{
         grid-template-rows: 60% 40%;
     }
